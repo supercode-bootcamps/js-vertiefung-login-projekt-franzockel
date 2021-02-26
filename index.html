@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="de-DE">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt Name</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super secret Log in</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <nav>
+      <h1><img src="assets/img/eye.png" alt="Logo" /></h1>
+      <ul>
+        <li>welcome, <span id="userName"></span></li>
+        <li><a href="#" id="logout">>log out</a></li>
+      </ul>
+    </nav>
+    <main>
+      <img src="assets/img/Illustration.png" alt="Hackerman Illustration" />
+      <div>
+        <h2>Top secret</h2>
+        <p>You may not click the button.</p>
+        <button>>Secret content</button>
+      </div>
+    </main>
+    <div id="modal">
+      <form action="#">
+        <h2>>Login</h2>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="username" />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="password" />
+        <button id="submit">Submit</button>
+      </form>
+    </div>
+
     <script src="assets/js/main.js"></script>
-</body>
+  </body>
 </html>
