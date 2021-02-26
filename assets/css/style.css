@@ -52,6 +52,10 @@ button {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+#modal h2 {
+  color: #2f2e41;
+}
+
 #modal form {
   background-color: #8985a8;
   width: 50vw;
