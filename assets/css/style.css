@@ -58,13 +58,23 @@ button {
 
 #modal form {
   background-color: #8985a8;
-  width: 50vw;
-  height: 50vh;
+  width: 80vw;
+  height: 80vh;
   position: relative;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  padding-top: 8vh;
+  padding-bottom: 186px;
+  text-align: center;
+  -webkit-box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.7);
+          box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+}
+
+#modal form h2 {
+  margin-bottom: 53px;
 }
 
 #modal form label {
@@ -72,7 +82,44 @@ button {
 }
 
 #modal form input {
-  display: block;
+  padding: 10px 23px 17px;
+  font-family: Roboto Mono;
+  font-size: 30px;
+  line-height: 40px;
+  margin: 0 10px 30px;
+  width: 60%;
+}
+
+#modal form .wrongInput {
+  color: #ff002e;
+}
+
+#modal form #usernameDiv,
+#modal form #passwordDiv {
+  position: relative;
+}
+
+#modal form .annotation {
+  display: inline-block;
+  color: #ff002e;
+  font-size: 30px;
+  line-height: 40px;
+  position: absolute;
+  top: 10px;
+}
+
+#modal form .warning {
+  color: #ff002e;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: left;
+  width: 60%;
+  margin: 0 auto;
+}
+
+#modal form #submit {
+  margin-top: 10px;
+  width: 60%;
 }
 
 nav {
@@ -82,7 +129,7 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 50px 122px;
+  padding: 8vh 122px;
 }
 
 nav ul {
@@ -111,10 +158,15 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 65vh;
+  padding: 0 122px;
 }
 
 main img {
-  padding-top: 60px;
-  padding-bottom: 130px;
+  height: 100%;
+  margin-right: 30px;
 }
 /*# sourceMappingURL=style.css.map */

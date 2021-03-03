@@ -10,7 +10,7 @@
     <nav>
       <h1><img src="assets/img/eye.png" alt="Logo" /></h1>
       <ul>
-        <li>welcome, <span id="userName"></span></li>
+        <li>welcome, <span id="welcomeUsername"></span></li>
         <li><a href="#" id="logout">>log out</a></li>
       </ul>
     </nav>
@@ -25,10 +25,14 @@
     <div id="modal">
       <form action="#">
         <h2>>Login</h2>
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="username" />
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="password" />
+        <div id="usernameDiv">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="username" />
+        </div>
+        <div id="passwordDiv">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="password" />
+        </div>
         <button id="submit">Submit</button>
       </form>
     </div>

@@ -63,19 +63,65 @@ button {
 
   form {
     background-color: $color-lightPurple;
-    width: 50vw;
-    height: 50vh;
+    width: 80vw;
+    height: 80vh;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding-top: 8vh;
+    padding-bottom: 186px;
+    text-align: center;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+
+    h2 {
+      margin-bottom: 53px;
+    }
 
     label {
       display: none;
     }
 
     input {
-      display: block;
+      padding: 10px 23px 17px;
+      font-family: Roboto Mono;
+      font-size: 30px;
+      line-height: 40px;
+      margin: 0 10px 30px;
+      width: 60%;
+    }
+
+    .wrongInput {
+      color: $color-red;
+    }
+
+    #usernameDiv,
+    #passwordDiv {
+      position: relative;
+    }
+
+    .annotation {
+      display: inline-block;
+      color: $color-red;
+      font-size: 30px;
+      line-height: 40px;
+      position: absolute;
+      top: 10px;
+    }
+
+    .warning {
+      color: $color-red;
+      font-size: 30px;
+      line-height: 40px;
+      text-align: left;
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    #submit {
+      margin-top: 10px;
+      width: 60%;
     }
   }
 }
@@ -83,7 +129,7 @@ button {
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 50px 122px;
+  padding: 8vh 122px;
 
   ul {
     display: flex;
@@ -106,9 +152,12 @@ nav {
 main {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  height: 65vh;
+  padding: 0 122px;
 
   img {
-    padding-top: 60px;
-    padding-bottom: 130px;
+    height: 100%;
+    margin-right: 30px;
   }
 }
