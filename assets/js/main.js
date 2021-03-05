@@ -59,7 +59,8 @@ document.querySelector("#submit").addEventListener("click", (e) => {
   } else if (username == "" && password == "") {
     error("missingInput");
   } else if (
-    USERS.some((user) => user["name"] == username) &&
+    index >= 0 &&
+    USERS[index].name.toLowerCase() == username &&
     USERS[index].secret !== password
   ) {
     error("password");
