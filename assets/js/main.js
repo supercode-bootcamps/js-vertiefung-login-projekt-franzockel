@@ -50,7 +50,6 @@ document.querySelector("#submit").addEventListener("click", (e) => {
           setCookie("Username", username, 365);
         } else if (data.success == false && data.message == "user not found") {
           error("username", data.message);
-          console.log(data.message);
         } else if (data.success == false && data.message == "wrong password") {
           error("password", data.message);
         }
