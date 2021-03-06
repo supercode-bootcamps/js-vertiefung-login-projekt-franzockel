@@ -1,71 +1,62 @@
-const USERS = [
-  { name: "supercode", secret: "no_one_will_know" },
-  { name: "music_fan_1990", secret: "WeAreTheChampi0ns" },
-  { name: "admin", secret: "1234" },
-  { name: "Franzi", secret: "1234" },
-];
-
-document.onload = checkCookie();
+document.onload = checkAlreadyVisited();
 document.onload = checkUsername();
 
 // ==========LOGIN MODAL==========
-function error(x) {
-  if (x == "username" || x == "password") {
-    document.querySelector("#" + x).classList.add("wrongInput");
+function error(wrongValue, errorMessage) {
+  let warning = document.createElement("p");
+  warning.classList.add("warning");
+  document.querySelector("form").appendChild(warning);
+
+  if (wrongValue == "username" || wrongValue == "password") {
+    document.querySelector("#" + wrongValue).classList.add("wrongInput");
+
+    warning.innerText = `*${errorMessage}`;
+  } else if (wrongValue == "missingInput") {
+    document.querySelectorAll("form > div > input").forEach((item) => {
+      item.classList.add("wrongInput");
+    });
+
+    warning.innerText = "*please enter username and password";
+  }
+
+  document.querySelectorAll(".wrongInput").forEach((item) => {
     let annotation = document.createElement("p");
     annotation.innerText = "*";
     annotation.classList.add("annotation");
-    document.querySelector("#" + x + "Div").appendChild(annotation);
-
-    let warning = document.createElement("p");
-    warning.classList.add("warning");
-    document.querySelector("form").appendChild(warning);
-
-    if (x == "username") {
-      warning.innerText = "*user does not exist";
-    } else if (x == "password") {
-      warning.innerText = "*password is wrong";
-    }
-  } else if (x == "missingInput") {
-    document.querySelectorAll("form > div > input").forEach((item) => {
-      item.classList.add("wrongInput");
-      let annotation = document.createElement("p");
-      annotation.innerText = "*";
-      annotation.classList.add("annotation");
-      item.parentNode.appendChild(annotation);
-    });
-    let warning = document.createElement("p");
-    warning.classList.add("warning");
-    document.querySelector("form").appendChild(warning);
-    warning.innerText = "*please enter username and password";
-  }
+    item.parentNode.appendChild(annotation);
+  });
 }
 
 document.querySelector("#submit").addEventListener("click", (e) => {
   e.preventDefault();
   let username = document.querySelector("#username").value.toLowerCase();
   let password = document.querySelector("#password").value;
-  index = USERS.findIndex((x) => x.name.toLowerCase() == username);
 
-  if (
-    index >= 0 &&
-    USERS[index].name.toLowerCase() == username &&
-    USERS[index].secret == password
-  ) {
-    document.querySelector("#modal").style.display = "none";
-    document.querySelector("#welcomeUsername").innerText = username;
-    setCookie("Visited", "true", 365);
-    setCookie("Username", username, 365);
-  } else if (username == "" && password == "") {
-    error("missingInput");
-  } else if (
-    index >= 0 &&
-    USERS[index].name.toLowerCase() == username &&
-    USERS[index].secret !== password
-  ) {
-    error("password");
+  const data = { name: username, secret: password };
+  if (username != "" && password != "") {
+    fetch("https://supercode-auth-demo.herokuapp.com/", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success == true) {
+          document.querySelector("#modal").style.display = "none";
+          document.querySelector("#welcomeUsername").innerText = username;
+          setCookie("Visited", "true", 365);
+          setCookie("Username", username, 365);
+        } else if (data.success == false && data.message == "user not found") {
+          error("username", data.message);
+          console.log(data.message);
+        } else if (data.success == false && data.message == "wrong password") {
+          error("password", data.message);
+        }
+      });
   } else {
-    error("username");
+    error("missingInput");
   }
 });
 
@@ -114,7 +105,7 @@ function getCookie(cname) {
   return "";
 }
 
-function checkCookie() {
+function checkAlreadyVisited() {
   var pageAlreadyVisited = getCookie("Visited");
   if (pageAlreadyVisited == "true") {
     document.querySelector("#modal").style.display = "none";
